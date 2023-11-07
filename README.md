@@ -1,5 +1,5 @@
 # gsonlines
-Java library for reading/wriring JSON lines data.
+Java library for reading/writing JSON lines data.
 
 ## Reading data
 
