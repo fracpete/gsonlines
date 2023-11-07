@@ -50,11 +50,11 @@ public class Batch {
     File fin = new File("/some/where/in.jsonl");
     File fout = new File("/some/where/out.jsonl");
     ArrayReader r = new ArrayReader(fin);
-    ArrayWriter w = new ArrayWriter(fout);
     Map[] data = r.read(Map.class);
-    // do something with the data
-    w.write(data);
     r.close();
+    // do something with the data
+    ArrayWriter w = new ArrayWriter(fout);
+    w.write(data);
     w.close();
   }
 }
