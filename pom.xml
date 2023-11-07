@@ -15,7 +15,7 @@
   </parent>
 
   <name>gsonlines</name>
-  <description>Library for reading/writing jsonlines data.</description>
+  <description>Library for reading/writing jsonlines data using the gson library under the hood for automatic deserialization/serialization of objects.</description>
   <organization>
     <name>University of Waikato, Hamilton, NZ</name>
     <url>http://www.waikato.ac.nz/</url>
