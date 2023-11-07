@@ -57,6 +57,7 @@ public class Utils {
   public static void closeQuietly(Writer w) {
     if (w != null) {
       try {
+        w.flush();
 	w.close();
       }
       catch (Exception e) {
@@ -73,6 +74,7 @@ public class Utils {
   public static void closeQuietly(OutputStream os) {
     if (os != null) {
       try {
+        os.flush();
 	os.close();
       }
       catch (Exception e) {
