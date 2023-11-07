@@ -1,6 +1,21 @@
 # gsonlines
 Java library for reading/writing JSON lines data.
+
 Automatically compresses/decompresses when the file name ends with `.gz`.
+
+
+## Maven
+
+Add the following to your `pom.xml`:
+
+```xml
+    <dependency>
+      <groupId>com.github.fracpete</groupId>
+      <artifactId>gsonlines</artifactId>
+      <version>0.0.1</version>
+    </dependency>
+```
+
 
 ## Examples
 
