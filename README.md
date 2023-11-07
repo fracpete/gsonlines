@@ -5,7 +5,11 @@ Java library for reading/wriring JSON lines data.
 
 ### Stream
 
+The following example reads one line at a time and returns the generated `Map` object:
+
 ```java
+import com.github.fracpete.gsonlines.StreamReader;
+
 import java.io.File;
 import java.util.Map;
 
@@ -25,7 +29,11 @@ public class Stream {
 
 ### Batch
 
+The following example reads all the lines in one go and returns an array of `Map` objects: 
+
 ```java
+import com.github.fracpete.gsonlines.ArrayReader;
+
 import java.io.File;
 import java.util.Map;
 
