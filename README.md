@@ -48,11 +48,11 @@ public class Batch {
 
   public static void main(String[] args) throws Exception {
     File fin = new File("/some/where/in.jsonl");
-    File fout = new File("/some/where/out.jsonl");
     ArrayReader r = new ArrayReader(fin);
     Map[] data = r.read(Map.class);
     r.close();
     // do something with the data
+    File fout = new File("/some/where/out.jsonl");
     ArrayWriter w = new ArrayWriter(fout);
     w.write(data);
     w.close();
