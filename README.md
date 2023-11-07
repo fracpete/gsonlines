@@ -1,6 +1,7 @@
 # gsonlines
-Java library for reading/writing JSON lines data using the [gson](https://github.com/google/gson) 
-library under the hood for automatic deserialization/serialization of objects.
+Java library for reading/writing [JSON lines](https://jsonlines.org/) data using the 
+[gson](https://github.com/google/gson) library under the hood for automatic 
+deserialization/serialization of objects.
 
 Automatically compresses/decompresses when the file name ends with `.gz`.
 
