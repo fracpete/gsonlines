@@ -10,11 +10,13 @@ import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.Closeable;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.zip.GZIPInputStream;
 
 /**
  * Ancestor for readers.
@@ -36,6 +38,12 @@ public abstract class AbstractReader
   /** the input stream reader to close. */
   protected InputStreamReader m_InputStreamReader;
 
+  /** the input stream to close. */
+  protected InputStream m_InputStream;
+
+  /** the gzip input stream to close. */
+  protected GZIPInputStream m_GzipInputStream;
+
   /** the next line to parse. */
   protected String m_NextLine;
 
@@ -46,8 +54,16 @@ public abstract class AbstractReader
    * @throws IOException        if opening the file fails
    */
   protected AbstractReader(File f) throws IOException {
-    m_FileReader = new FileReader(f);
-    init(m_FileReader);
+    if (f.getName().toLowerCase().endsWith(".gz")) {
+      m_InputStream       = new FileInputStream(f);
+      m_GzipInputStream   = new GZIPInputStream(m_InputStream);
+      m_InputStreamReader = new InputStreamReader(m_GzipInputStream);
+      init(m_InputStreamReader);
+    }
+    else {
+      m_FileReader = new FileReader(f);
+      init(m_FileReader);
+    }
   }
 
   /**
@@ -114,13 +130,21 @@ public abstract class AbstractReader
       Utils.closeQuietly(m_BufferedReader);
       m_BufferedReader = null;
     }
-    if (m_FileReader != null) {
-      Utils.closeQuietly(m_FileReader);
-      m_FileReader = null;
-    }
     if (m_InputStreamReader != null) {
       Utils.closeQuietly(m_InputStreamReader);
       m_InputStreamReader = null;
+    }
+    if (m_GzipInputStream != null) {
+      Utils.closeQuietly(m_GzipInputStream);
+      m_GzipInputStream = null;
+    }
+    if (m_InputStream != null) {
+      Utils.closeQuietly(m_InputStream);
+      m_InputStream = null;
+    }
+    if (m_FileReader != null) {
+      Utils.closeQuietly(m_FileReader);
+      m_FileReader = null;
     }
   }
 }

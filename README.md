@@ -1,5 +1,7 @@
 # gsonlines
 Java library for reading/writing JSON lines data.
+Automatically compresses/decompresses when the file name ends with `.gz`.
+
 
 ## Reading data
 
